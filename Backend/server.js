@@ -19,7 +19,10 @@ const mailRoutes = require("./routes/mail.routes");
 const keepServerRunning = require("./services/active.service");
 const dbStream = require("./services/logging.service");
 require("./config/db");
-const PORT = process.env.PORT || 4000;
+
+
+const PORT =process.env.PORT || 4000;
+
 
 if (process.env.ENVIRONMENT == "production") {
   app.use(

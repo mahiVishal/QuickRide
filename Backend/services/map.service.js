@@ -35,16 +35,16 @@ module.exports.getDistanceTime = async (origin, destination) => {
   )}&destinations=${encodeURIComponent(destination)}&key=${apiKey}`;
 
   try {
-    const response = await axios.get(url);
-    if (response.data.status === "OK") {
-      if (response.data.rows[0].elements[0].status === "ZERO_RESULTS") {
-        throw new Error("No routes found");
-      }
+    // const response = await axios.get(url);
+    // if (response.data.status === "OK") {
+    //   if (response.data.rows[0].elements[0].status === "ZERO_RESULTS") {
+    //     throw new Error("No routes found");
+    //   }
 
-      return response.data.rows[0].elements[0];
-    } else {
-      throw new Error("Unable to fetch distance and time");
-    }
+    //   return response.data.rows[0].elements[0];
+    // } else {
+    //   throw new Error("Unable to fetch distance and time");
+    // }
   } catch (err) {
     console.error(err);
     throw err;

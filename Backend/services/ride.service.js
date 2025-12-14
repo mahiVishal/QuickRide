@@ -8,7 +8,11 @@ const getFare = async (pickup, destination) => {
     throw new Error("Pickup and destination are required");
   }
 
-  const distanceTime = await mapService.getDistanceTime(pickup, destination);
+  // const distanceTime = await mapService.getDistanceTime(pickup, destination);
+    const distanceTime = {
+    distance: { value: 5000 }, // 5 km
+    duration: { value: 900 },  // 15 minutes
+  };
 
   const baseFare = {
     auto: 30,
@@ -27,7 +31,7 @@ const getFare = async (pickup, destination) => {
     car: 3,
     bike: 1.5,
   };
-
+ console.log(distanceTime);
   const fare = {
     auto: Math.round(
       baseFare.auto +
@@ -87,6 +91,7 @@ module.exports.createRide = async ({
 
     return ride;
   } catch (error) {
+        console.log(error);
     throw new Error("Error occured while creating ride.");
   }
 };

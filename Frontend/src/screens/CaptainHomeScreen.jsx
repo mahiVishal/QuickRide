@@ -26,7 +26,7 @@ const defaultRideData = {
   status: "pending",
   duration: 0,
   distance: 0,
-  _id: "123456789012345678901234",
+  _id: "693c46ea413266639d9e25af",
 };
 
 function CaptainHomeScreen() {

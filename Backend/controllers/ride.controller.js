@@ -66,7 +66,9 @@ module.exports.createRide = async (req, res) => {
 
     Promise.resolve().then(async () => {
       try {
-        const pickupCoordinates = await mapService.getAddressCoordinate(pickup);
+        // const pickupCoordinates = await mapService.getAddressCoordinate(pickup);
+        const pickupCoordinates = { ltd: 12.9716, lng: 77.5946 }; // Dummy coordinates
+
         console.log("Pickup Coordinates", pickupCoordinates);
 
         const captainsInRadius = await mapService.getCaptainsInTheRadius(
@@ -130,7 +132,12 @@ module.exports.confirmRide = async (req, res) => {
   const { rideId } = req.body;
 
   try {
+    console.log("rideId", rideId);
+    
     const rideDetails = await rideModel.findOne({ _id: rideId });
+
+    console.log("rideDetails", rideDetails);
+    
 
     if (!rideDetails) {
       return res.status(404).json({ message: "Ride not found." });
@@ -250,7 +257,8 @@ module.exports.cancelRide = async (req, res) => {
       { new: true }
     );
 
-    const pickupCoordinates = await mapService.getAddressCoordinate(ride.pickup);
+    const pickupCoordinates = { ltd: 12.9716, lng: 77.5946 }; // Dummy coordinates
+    // const pickupCoordinates = await mapService.getAddressCoordinate(ride.pickup);
     const captainsInRadius = await mapService.getCaptainsInTheRadius(
       pickupCoordinates.ltd,
       pickupCoordinates.lng,

@@ -25,7 +25,7 @@ function RideDetails({
     <>
       <div
         className={`${
-          showPanel ? "bottom-0" : "-bottom-[60%]"
+          showPanel ? "bottom-0" : "-bottom-[0%]"
         } transition-all duration-500 absolute bg-white w-full rounded-t-xl p-4 pt-2`}
       >
         <div>

@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 let MONGO_DB = {
   production: { url: process.env.MONGODB_PROD_URL, type: "Atlas" },
-  development: { url: process.env.MONGODB_DEV_URL, type: "Compass" },
+  development: { url: process.env.MONGODB_DEV_URL, type: "Atlas" },
 };
 
 let environment = process.env.ENVIRONMENT;
 
 mongoose
-  .connect(MONGO_DB[environment].url)
+  .connect("mongodb+srv://sinvishu123_db_user:2xEWgNwetni3lycK@cluster0.vf8bjfi.mongodb.net/test?appName=Cluster0")
   .then(() => {
-    console.log("Connected to Mongo DB", MONGO_DB[environment].type);
+    console.log("Connected to Mongo DB");
   })
-  .catch(() => {
-    console.log("Failed to connect to MongoDB");
+  .catch((err) => {
+    console.log("Failed to connect to MongoDB"+err);
   });
 
 module.exports = mongoose.connection;
